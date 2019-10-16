@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <script>
+        const data = [
+            {
+                version: "6.24.1",
+                id: "Alistar",
+                key: "12",
+                name: "Alistar",
+                title: "the Minotaur",
+                img:
+                    "https://www.masterypoints.com/assets/img/lol/champion_icons/Alistar.png",
+                splash:
+                    "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Alistar_0.jpg",
+                blurb:
+                    "As the mightiest warrior to ever emerge from the Minotaur tribes of the Great Barrier, Alistar defended his tribe from Valoran's many dangers; that is, until the coming of the Noxian army. Alistar was lured from his village by the machinations of ...",
+            },
+
+        ]
+
+        const containerPrincipal = document.getElementById('container');
+
+        const createTemplateCard = (list) => {
+            let templateCard = '';
+            list.forEach((dataLol) => {
+                const card = `
+                    <div class='cards'>
+                      <figure>
+                      <img class='frontal' src="${ dataLol.img}"/>
+                        <li class='name'>${ dataLol.name}</li>
+                            <hr>
+                        <div class='trasera'>
+                            <li class='title'> ${ dataLol.blurb}</li>
+                        </div>
+                      </figure>
+                    </div>`;
+                templateCard += card;
+            });
+            containerPrincipal.innerHTML = templateCard;
+        };
+        createTemplateCard(data);
+
+    </script>
+</body>
+
+</html>
