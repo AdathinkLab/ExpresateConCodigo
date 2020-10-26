@@ -7,5 +7,53 @@
 </head>
 <body>
 
+    <script>
+        
+        /*
+        
+              1              
+              2              
+              3              
+              4              
+              5              
+              6              
+              7              
+       123456787654321
+              7              
+              6              
+              5              
+              4              
+              3              
+              2              
+              1              
+        
+        */
+//Metodos de Utilidades 
+
+
+//convierte un array a string 
+//example -> [1,2,3]  - > 123
+function arraytostring(x){
+    let result = ''
+    for(let item of x){
+   result+= item;
+    }
+    return result;
+}
+
+
+//Creamos array agregan el rango de 1 hasta el numero que se envia como input
+// example -> 5   resultado -> [1,2,3,4]
+function crear_rango(numero){
+    let array = []
+    let numero_inicial = 1;
+    while(numero_inicial < numero){
+   array.push(numero_inicial);
+   numero_inicial++;
+    }
+    return array;
+}
+
+</script>
 </body>
 </html>
