@@ -54,6 +54,90 @@ function crear_rango(numero){
     return array;
 }
 
+
+//Funcion Principal
+function generar_cruz (input_numero){
+        //saber el punto a escribir 
+        //detectar el patron , inversa
+        //detectar similitudes, se detecta qeu es un cuadrado
+
+
+        var input = input_numero;
+    
+       //resultado
+       //creamos rango 
+        var calculo_asc= crear_rango(input)
+
+        //convertimos el rango desc
+        //Example -> [1,2,3] , resultado -> [3,2,1]
+        // el termino [...array] -> es crear una copia del array en este caso, esta creando una copia del calculo_asc
+        var calculo_desc= [...calculo_asc].reverse();
+       
+       //Punto para pintar, debemos saber cual es el punto donde debemos imprimir los numeros
+        var punto = input;
+        
+        //Calular cuantas columasn y filas y iterar , normalmente siempre son iguales los dos , example 4X4 
+        var columnas = ((input-1)*2) + 1;
+        var filas  = columnas
+        
+        //varaible para indicar si debemos imprimir los valores en asc o desc
+        //es true inical , ya que primero debemos imprimir valores en asc
+        var is_asc=true
+
+        var count_print = 0;
+
+       
+       //iteramos la cantidad de filas
+        for (let i = 0 ; filas>i; i++){
+
+            // solo entra el if , si no es el punto medio (la linea horizontal de una cruz)
+         if(i+1 != punto){
+             
+            for (let h = 0 ; columnas>h; h++){
+                //solo entra al if , cuando sabe que debe imprimir el numero
+                 if(h+1==punto){
+
+                     //Operador ternario (condicion)?verdadero:false; -> es una forma abreviada de crear condicionales
+                 //detectamos si debemos imprimir el valor del resultado en desc o asc 
+                 let value;
+
+                 if(is_asc){
+                  value=calculo_asc[count_print];
+                 }else {value=calculo_desc[count_print]}
+                 //  let value = (is_asc)?calculo_asc[count_print]:calculo_desc[count_print]
+
+                   //imprimimos numero
+                    document.write(value+"");
+
+
+                    count_print = count_print +1;
+                 }else {
+                     //si no se debe imprimir el numero , creara espacios en blanco
+                     document.write("&nbsp;&nbsp;")
+                 }
+
+                }
+            }
+            else { //linea horizontal , aca imprimimos la linea horizontal  , example 123454321
+             document.write(arraytostring(calculo_asc) + input + arraytostring(calculo_desc));
+
+
+             //al imprimirse la linea horizontal los siguientes datos seran numero desc , por eso cambiamos
+             // el is_asc a false y reseteamos la variable count_print
+             is_asc=false ;
+             count_print =0;
+            }
+            //salto de linea
+            document.write('<br>')
+        }
+  
+}
+
+//Pruebas
+let numero_input = prompt("Ingrese un numero");
+
+generar_cruz(parseInt(numero_input))
+
 </script>
 </body>
 </html>
